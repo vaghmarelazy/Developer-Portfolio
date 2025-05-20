@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Sora, Poppins } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -10,6 +10,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+const sora = Sora({
+  variable: "--font-sora",
+  subsets: ["latin"],
+})
+
+const poppins = Poppins({
+  variable: "--font-poppins",
+  subsets: ["latin"],
+  weight:['400']
+  })
 
 export const metadata = {
   title: "Portfolio",
@@ -21,8 +31,19 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body className={`${geistSans.className} ${geistMono.className} transition-colors duration-500`}>
-        {children}
+      <body 
+        className={`
+          ${geistSans.className} 
+          ${geistMono.className} 
+          ${sora.className}
+          ${poppins.className}
+          transition-colors 
+          duration-500
+        `}
+      >
+        <div className={poppins.className}>
+          {children}
+        </div>
       </body>
     </html>
   );
