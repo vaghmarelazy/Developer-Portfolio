@@ -27,6 +27,41 @@ const tech = [
   { name: "Netlify", icon: "tech/netlify-icon.svg" },
 ];
 
+const projects = [
+  {
+    name: "MystryMessages",
+    icon: "/projects/MystryMessages.png",
+    descrption: "A full-stack anonymous messaging platform where users can send and receive mystery messages securely. Built with Next.js, Resend, MongoDB, and Gemini AI, this app offers a seamless and interactive user experience.",
+    isLinkAvailable: true,
+    liveLink:"https://mystry-messages-delta.vercel.app/",
+    github : "https://github.com/vaghmarelazy/Mystry-messages"
+
+  },
+  {
+    name: "FocusFlow",
+    icon: "/projects/FocusFlow.png",
+    descrption: "FocusFlow is a clean, full-screen Android timer app designed to help you stay productive using the Pomodoro technique (work + break cycles). Built using Kotlin, this app is lightweight, intuitive, and completely open-source.",
+    isLinkAvailable: false,
+    github : "https://github.com/vaghmarelazy/FocusFlow"
+  },
+  {
+    name: "APOD",
+    icon: "/projects/APOD.png",
+    descrption: "A React application that fetches and displays data from NASA's Astronomy Picture of the Day (APOD) API, including the title, description, and image of the day.",
+    isLinkAvailable : true,
+    liveLink:"https://apod-nasa-react-psi.vercel.app/",
+    github : "https://github.com/vaghmarelazy/APOD-NASA"
+  },
+  {
+    name: "PassOP",
+    icon: "/projects/PassOP.png",
+    descrption: "A react application with Clean UI to store password both in localstorage and Cloud (MongoDB)",
+    isLinkAvailable : true,
+    liveLink:"https://lazymanager.netlify.app/",
+    github : "https://github.com/vaghmarelazy/Password-Manger"
+  }
+]
+
 const sora = Sora({ subsets: ['latin'], weight: ['100', '400', '700'] })
 
 export default function Portfolio() {
@@ -41,6 +76,9 @@ export default function Portfolio() {
     setTheme(currentTheme);
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(currentTheme);
+    projects.map((project) => (
+      console.log(project.name)
+    ))
   }, []);
 
   const handleThemeChange = (newThemeFromChild) => {
@@ -58,14 +96,21 @@ export default function Portfolio() {
       {/* Hero Section */}
       <ThemeToggle onThemeChange={handleThemeChange} />
 
-      <section className="min-h-screen flex flex-col justify-center text-center space-y-3 sm:space-y-4">
+      <section className="min-h-screen flex flex-col justify-center text-center space-y-3 sm:space-y-4 duration-500">
         <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${sora.className}`}>Rupesh Vaghmare</h1>
         <p className="text-base sm:text-lg opacity-75">Full-Stack Developer (MERN Stack)</p>
-        <p className="max-w-3xl mx-auto px-4 text-sm sm:text-base opacity-70 font-light">Hi, I&apos;m Rupesh Vaghmare — a Full-Stack Developer specializing in the MERN stack.
-          I build dynamic web applications with clean UI, scalable backends, and real-time features. I&apos;ve developed projects like Dive-Deeper (AI + YouTube), Pass OP (password manager), and a Pinterest clone. Currently seeking new opportunities to build impactful tech solutions.</p>
+        <p className="max-w-3xl mx-auto px-4 text-sm sm:text-base opacity-70 font-light">Full-Stack Developer specializing in the MERN stack.
+          I build dynamic web applications with clean UI, scalable backends, and real-time features. I&apos;ve developed projects like MystryMessages, Pass OP (password manager), and an Android appilication FocusFlow. Currently seeking new opportunities to build impactful tech solutions.</p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
-          <Button asChild><a href="https://github.com/vaghmarelazy" target="_blank">GitHub</a></Button>
-          <Button asChild><a href="https://linkedin.com/in/lazy-developer" target="_blank">LinkedIn</a></Button>
+          <Button asChild>
+            <a href="https://github.com/vaghmarelazy" target="_blank">
+              <Image src="/tech/github-142-svgrepo-com.svg" alt="Github" width={20} height={20}
+                className={`duration-500 filter brightness-0 ${theme == 'light' ? 'invert-100' : 'invert-0'}`} />GitHub</a>
+          </Button>
+          <Button asChild><a href="https://linkedin.com/in/lazy-developer" target="_blank">
+            <Image src="/tech/linkedin-icon.svg" alt="LinkedIn" width={20} height={20}
+              className={`duration-500 filter brightness-0 ${theme == 'light' ? 'invert-100' : 'invert-0'}`} />
+            LinkedIn</a></Button>
           <Button asChild><a href="/resume.pdf" target="_blank">Resume</a></Button>
         </div>
       </section>
@@ -73,81 +118,21 @@ export default function Portfolio() {
       {/* Projects Section */}
       <section className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
         <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-extrabold mb-6 text-center">Projects</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 w-full">
-          {/* Project 1 */}
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Project 2 */}
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          {/* Project 3 */}
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardContent className="p-4">
-              <Image src="/images/mystryMessages.png" alt="Live preview image" width={500} height={500} className="rounded-md mb-3 w-full h-auto" />
-              <h3 className="text-lg md:text-xl font-bold">Real-time Multiplayer Quiz</h3>
-              <p className="text-sm text-muted-foreground mt-1 mb-3">Play quizzes with friends in real-time. Socket.io + Gemini AI + MongoDB.</p>
-              <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                <Button asChild variant="outline"><a href="#">Live</a></Button>
-                <Button asChild variant="outline"><a href="#">Code</a></Button>
-              </div>
-            </CardContent>
-          </Card>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-4 md:gap-6 w-full">
+          {/* Projects */}
+          {projects.map((project) => (
+            <Card key={project.name}>
+              <CardContent className="p-4">
+                <Image src={project.icon} alt="Live preview image" width={500} height={500} className=" rounded-md mb-3 w-full h-60" />
+                <h3 className="text-lg md:text-xl font-bold">{project.name}</h3>
+                <p className="text-sm text-muted-foreground mt-1 mb-3">{project.descrption}</p>
+                <div className="mt-4 flex flex-col sm:flex-row gap-2">
+                  <Button asChild variant="outline"  className={`${project.isLinkAvailable?'cursor-pointer ':'cursor-not-allowed'}`}><a href={project.liveLink} target="_blank">Live</a></Button>
+                  <Button asChild variant="outline"><a href={project.github} target="_blank">Code</a></Button>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </section>
 
