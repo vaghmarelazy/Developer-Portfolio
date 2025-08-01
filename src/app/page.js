@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import ThemeToggle from "@/components/themeToggle";
@@ -92,15 +92,12 @@ export default function Portfolio() {
     setTheme(currentTheme);
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(currentTheme);
-    projects.map((project) => (
-      console.log(project.name)
-    ))
   }, []);
 
   const handleThemeChange = (newThemeFromChild) => {
     // console.log("Parent component received theme:", newThemeFromChild);
-    setTheme(newThemeFromChild); 
-    localStorage.setItem('theme', newThemeFromChild); 
+    setTheme(newThemeFromChild);
+    localStorage.setItem('theme', newThemeFromChild);
     // Update the class on the root HTML element
     document.documentElement.classList.remove('light', 'dark');
     document.documentElement.classList.add(newThemeFromChild);
@@ -114,9 +111,9 @@ export default function Portfolio() {
 
       <section className="min-h-screen flex flex-col justify-center text-center space-y-3 sm:space-y-4 duration-500">
         {/* <p className="text-base sm:text-lg lg:text-2xl opacity-75">Software developer</p> */}
-        <h1 className={`text-4xl sm:text-5xl lg:text-6xl font-bold ${sora.className}`}>Rupesh Vaghmare</h1>
+        <h1 className={`text-4xl sm:text-5xl lg:text-7xl font-bold ${sora.className}`}>Rupesh Vaghmare</h1>
         <p className="max-w-3xl mx-auto px-4 font-extralight text-xs sm:text-xs lg:text-sm opacity-70 ">I&apos;m a Software Developer specialized in the MERN stack.
-          I build dynamic web applications with clean UI, scalable backends, and real-time features. I&apos;ve developed projects like MystryMessages, Pass OP, and an Android appilication FocusFlow. Currently seeking new opportunities to build impactful tech solutions.</p>
+          I build dynamic web applications with clean UI, scalable backends, and real-time features. I&apos;ve developed projects like MystryMessages, Pass OP, and an Android appilication FocusFlow. Currently seeking opportunities to build impactful tech solutions.</p>
         <div className="flex flex-col sm:flex-row justify-center items-center gap-2 sm:gap-4">
           <Button asChild>
             <a href="https://github.com/vaghmarelazy" target="_blank">
@@ -127,12 +124,12 @@ export default function Portfolio() {
             <Image src="/tech/linkedin-icon.svg" alt="LinkedIn" width={20} height={20}
               className={`duration-500 filter brightness-0 ${theme == 'light' ? 'invert-100' : 'invert-0'}`} />
             LinkedIn</a></Button>
-          <Button asChild><a href="/resume.pdf" target="_blank">Resume</a></Button>
+          <Button asChild><a download={`/resume.pdf`} target="_blank">Resume</a></Button>
         </div>
       </section>
 
       {/* Projects Section */}
-      <section className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20">
+      <section  id="fade-in" className="min-h-screen flex flex-col justify-center items-center py-12 px-4 sm:px-6 md:px-8 lg:px-12 xl:px-20 fade-in">
         <div className="flex items-center space-x-2 mb-4">
           <div className="w-7 h-[1px] bg-black dark:bg-white" />
           <p className="text-xs sm:text-base lg:text-sm opacity-90 uppercase">What I have done</p>
@@ -198,7 +195,6 @@ export default function Portfolio() {
 
       </section>
 
-
       {/* About Section */}
       <section className="min-h-screen flex flex-col justify-center max-w-xl md:max-w-2xl mx-auto text-center px-4 py-12">
         <h2 className="text-2xl sm:text-3xl lg:text-5xl font-semibold mb-4">About Me</h2>
@@ -214,7 +210,7 @@ export default function Portfolio() {
         <h2 className="text-xl sm:text-2xl font-semibold">Get in Touch</h2>
         <p className="text-sm sm:text-base">Email: <a className="text-yellow-500 hover:text-yellow-600 duration-300" href="mailto:rupeshvaghmare1@email.com">rupeshvaghmare1@gmail.com</a></p>
       </section>
-      <footer className="w-full text-center">Made with {theme == 'dark' ? '🤍' : '❤️'} by Me</footer>
+      <footer className="w-full text-center">Made with {theme == 'dark' ? '🤍' : '❤️'} by <a href="https://github.com/vaghmarelazy">VaghmareLazy</a></footer>
     </div>
   );
 }

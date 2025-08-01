@@ -1,5 +1,6 @@
 import { Sora } from "next/font/google";
 import "./globals.css";
+import SmoothScrollingProvider from "@/lib/smoothScrollProvider";
 
 const sora = Sora({
   variable: "--font-sora",
@@ -25,9 +26,9 @@ export default function RootLayout({ children }) {
           duration-500
         `}
       >
-        <div>
+          <SmoothScrollingProvider>
           {children}
-        </div>
+          </SmoothScrollingProvider>
       </body>
     </html>
   );

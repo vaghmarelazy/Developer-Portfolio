@@ -8,6 +8,8 @@
 @custom-variant dark (&:is(.dark *));
 html {
   transition: background-color 0.5s ease, color 0.5s ease;
+  height: 100%;
+  overflow: hidden;
 }
 
 
@@ -127,6 +129,10 @@ html {
   body {
     @apply bg-background text-foreground;
   }
+}
+
+::selection {
+  @apply bg-primary text-primary-foreground;
 }
 
 
