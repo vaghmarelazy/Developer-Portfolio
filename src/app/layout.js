@@ -1,6 +1,6 @@
 import { Sora } from "next/font/google";
 import "./globals.css";
-import SmoothScrollingProvider from "@/lib/smoothScrollProvider";
+import SmoothScrollingProvider from "@/lib/SmoothScrollProvider";
 
 const sora = Sora({
   variable: "--font-sora",
