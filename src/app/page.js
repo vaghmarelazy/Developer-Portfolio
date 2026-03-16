@@ -124,7 +124,7 @@ export default function Portfolio() {
             <Image src="/tech/linkedin-icon.svg" alt="LinkedIn" width={20} height={20}
               className={`duration-500 filter brightness-0 ${theme == 'light' ? 'invert-100' : 'invert-0'}`} />
             LinkedIn</a></Button>
-          <Button asChild><a download={`/resume.pdf`} target="_blank">Resume</a></Button>
+          <Button asChild><a href="/resume.pdf" download>Resume</a></Button>
         </div>
       </section>
 
